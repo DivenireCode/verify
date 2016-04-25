@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="logout" type="button" value="登出" />
+</body>
+</html>
+<script src="../../app/core/lib/jquery-1.11.3.min.js"></script>
+<script>
+    (function ($) {
+        $('#logout').click(function (ev) {
+            $
+                .ajax({
+                    url: '/user/logout.json',
+                    type: 'post'
+                })
+                .done(function () {
+                    alert('登出成功');
+                })
+            ;
+        });
+    }(jQuery));
+</script>

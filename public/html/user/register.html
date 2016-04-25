@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form class="jq-regist">
+    <div>
+        <input type="text" name="username" value="" placeholder="请输入用户名"/>
+    </div>
+    <div>
+        <input type="password" name="password" value="" placeholder="请输入密码"/>
+    </div>
+    <div>
+        <input type="button" value="提交"/>
+    </div>
+</form>
+
+<script src="../../app/core/lib/jquery-1.11.3.min.js"></script>
+<script>
+    $('[type=button]').click(function (ev) {
+        var formData = (function (ary) {
+            var data = {};
+            for (var i = 0; i < ary.length; i++) {
+                data[ary[i].name] = ary[i].value;
+            }
+            return data;
+        }($("form.jq-regist").serializeArray()));
+
+        $
+            .ajax({
+                url: '/user/register.json',
+                type: 'post',
+                data: formData
+            })
+            .done(function (res) {
+                console.log(res);
+            })
+        ;
+    });
+</script>
+</body>
+</html>
